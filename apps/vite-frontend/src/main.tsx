@@ -5,7 +5,9 @@ import './i18n/config.ts';
 import './styles/globals.css';
 import {router} from './router';
 
-createRoot(document.querySelector('#root')!).render(
+const rootEl = document.querySelector('#root');
+if (!rootEl) throw new Error('Root element #root not found');
+createRoot(rootEl).render(
   <StrictMode>
     <RouterProvider router={router} />
   </StrictMode>,

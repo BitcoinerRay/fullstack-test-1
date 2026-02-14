@@ -16,14 +16,14 @@ export function LocaleSelect(): JSX.Element {
   const onLocaleChange = (value: string): void => {
     setIsPending(true);
     const currentPath = location.pathname.replace(/^\/[^/]+/, `/${value}`);
-    navigate(currentPath);
+    void navigate(currentPath);
     setTimeout(() => {
       setIsPending(false);
     }, 100);
   };
 
   return (
-    <Select disabled={isPending} value={locale || 'en'} onValueChange={onLocaleChange}>
+    <Select disabled={isPending} value={locale ?? 'en'} onValueChange={onLocaleChange}>
       <SelectTrigger className="w-[180px]">
         <Languages className="mr-2 h-4 w-4" />
         <SelectValue />

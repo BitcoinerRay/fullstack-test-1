@@ -1,3 +1,4 @@
+import type {JSX} from 'react';
 import {Outlet} from 'react-router-dom';
 import {HelmetProvider} from 'react-helmet-async';
 import {I18nextProvider} from 'react-i18next';
@@ -11,7 +12,7 @@ import {Header} from '@/components/header/header.component.tsx';
 import {Footer} from '@/components/footer/footer.component';
 import {LoadingAnimation} from '@/components/loading-animation/loading-animation.component';
 
-export function App() {
+export function App(): JSX.Element {
   return (
     <HelmetProvider>
       <I18nextProvider i18n={i18n}>
