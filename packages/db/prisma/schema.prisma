@@ -1,0 +1,29 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../../../node_modules/.prisma/client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// MikroORM migrations table (ignore, kept for compatibility)
+model mikro_orm_migrations {
+  id          Int       @id @default(autoincrement())
+  name        String?   @db.VarChar(255)
+  executed_at DateTime? @default(now()) @db.Timestamptz(6)
+
+  @@ignore
+}
+
+// Application models
+// Note: All models include base fields (id, createdAt, updatedAt)
+
+model Dummy {
+  id        String   @id @default(uuid()) @db.Uuid
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamp()
+  updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamp()
+
+  @@map("dummy")
+}
